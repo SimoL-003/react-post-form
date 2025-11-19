@@ -39,40 +39,45 @@ function App() {
   return (
     <>
       <main>
-        <div className="container">
-          <h1 className="my-4">Write a new post</h1>
+        <div className="container py-16">
+          <h1>Write a new post</h1>
           <form onSubmit={handleSubmit} action="">
-            <div className="mb-2 p-1 border-2">
+            <div className="input-container">
               <label htmlFor="author">Author</label>
               <input
                 type="text"
                 name="author"
                 id="author"
+                placeholder="Author's name"
                 value={formData.author}
                 onChange={handleInputChange}
               />
             </div>
-            <div className="mb-2 p-1 border-2">
+            <div className="input-container">
               <label htmlFor="title">Post title</label>
               <input
                 type="text"
                 name="title"
                 id="title"
+                placeholder="Title of the post"
                 value={formData.title}
                 onChange={handleInputChange}
               />
             </div>
-            <div className="mb-2 p-1 border-2">
+            <div className="input-container">
               <label htmlFor="body">Your post</label>
               <textarea
                 name="body"
                 id="body"
+                placeholder="Write your post"
                 value={formData.body}
                 onChange={handleInputChange}
               ></textarea>
             </div>
-            <div className="mb-2 p-1 border-2">
-              <label htmlFor="public">Private</label>
+            <div className="input-container flex-row items-center">
+              <label className="mb-0 mr-2" htmlFor="public">
+                Private post
+              </label>
               <input
                 type="checkbox"
                 name="public"
@@ -81,9 +86,9 @@ function App() {
                 onChange={handleInputChange}
               />
             </div>
-            <button className="mb-2 p-1 border-2" type="submit">
-              Invia post
-            </button>
+            <div className="input-container">
+              <button type="submit">Send post</button>
+            </div>
           </form>
         </div>
       </main>

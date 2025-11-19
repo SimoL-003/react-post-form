@@ -5,24 +5,24 @@
     @apply outline-0;
   }
   h1 {
-    @apply text-4xl font-bold mb-8 md:mb-10 leading-[1.2] text-slate-900;
+    @apply text-4xl font-bold mb-8 md:mb-10 leading-[1.2] text-slate-900 dark:text-slate-100;
   }
 }
 
 @layer components {
   form {
-    @apply my-12 p-2 lg:p-12 border-2 border-zinc-200 rounded-md bg-white shadow-2xl;
+    @apply my-12 p-2 lg:p-12 border-2 border-zinc-200 dark:border-zinc-800 rounded-md bg-zinc-100  dark:bg-zinc-900 shadow-2xl lg:shadow-md;
   }
   .input-container {
     @apply flex flex-col p-3 lg:mb-2;
   }
   label {
-    @apply mb-2 lg:mb-4 text-sm lg:text-base lg:leading-normal font-medium text-zinc-600;
+    @apply mb-2 lg:mb-4 text-sm lg:text-base lg:leading-normal font-medium text-zinc-600 dark:text-zinc-300;
   }
 
   input[type="text"],
   textarea {
-    @apply border-2 border-zinc-300 rounded-md p-4 bg-zinc-50 text-zinc-900 focus-visible:border-blue-500 shadow-sm transition-colors duration-150 lg:leading-normal;
+    @apply border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-4 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-50 focus-visible:border-blue-500 shadow-sm transition-colors duration-150 lg:leading-normal;
   }
 
   textarea {
@@ -31,15 +31,15 @@
 
   input::placeholder,
   textarea::placeholder {
-    @apply text-zinc-400;
+    @apply text-zinc-400 dark:text-zinc-500;
   }
 
   input[type="checkbox"] {
-    @apply w-5 aspect-square md:w-6  rounded-md border-zinc-400 accent-blue-500 transition-all duration-150 cursor-pointer;
+    @apply w-5 aspect-square md:w-6  rounded-md border-zinc-400 dark:border-zinc-600 accent-blue-500 transition-all duration-150 cursor-pointer;
   }
 
   form button {
-    @apply text-white text-lg self-center font-semibold rounded-md bg-blue-600 hover:bg-blue-700 transition-colors duration-1500 cursor-pointer shadow-sm py-3 lg:w-fit px-10;
+    @apply text-white text-lg self-center font-semibold rounded-md bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-150 cursor-pointer shadow-sm py-3 lg:w-fit px-10;
   }
 }
 

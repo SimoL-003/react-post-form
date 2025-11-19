@@ -38,7 +38,7 @@ function App() {
 
   return (
     <>
-      <main>
+      <main className="bg-white dark:bg-black">
         <div className="container py-16">
           <h1>Write a new post</h1>
           <form onSubmit={handleSubmit} action="">

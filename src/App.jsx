@@ -37,13 +37,14 @@ function App() {
           setFormVisibility((prev) => !prev);
           setErrorVisibility(false);
           setFormData(initialFormData);
-          setTimeout(() => setSuccessVisibility((prev) => !prev), 3000);
-          setTimeout(() => setFormVisibility((prev) => !prev), 3000);
+          setTimeout(() => {
+            setSuccessVisibility((prev) => !prev);
+            setFormVisibility((prev) => !prev);
+          }, 3000);
         }
       })
-      .catch((res) => {
-        console.log(res.message);
-        setErrorMessage(res.message);
+      .catch((err) => {
+        setErrorMessage(err.message);
         setErrorVisibility(true);
       });
   }
@@ -105,7 +106,7 @@ function App() {
                 type="checkbox"
                 name="public"
                 id="public"
-                value={formData.public}
+                checked={formData.public}
                 onChange={handleInputChange}
               />
             </div>

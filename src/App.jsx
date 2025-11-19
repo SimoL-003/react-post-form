@@ -32,6 +32,8 @@ function App() {
       .catch((res) => {
         console.log(res.message);
       });
+
+    setFormData(initialFormData);
   }
 
   return (

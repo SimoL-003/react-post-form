@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "motion/react";
 import ErrorMessage from "./ErrorMessage";
 
 export default function Form({
@@ -8,7 +9,13 @@ export default function Form({
   handleInputChange,
 }) {
   return (
-    <form onSubmit={handleSubmit} action="">
+    <motion.form
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0 }}
+      onSubmit={handleSubmit}
+      action=""
+    >
       <h2>Write a new post</h2>
       <div className="input-container">
         <label htmlFor="author">Author</label>
@@ -59,15 +66,23 @@ export default function Form({
       </div>
 
       {/* Error message */}
-      <ErrorMessage
-        errorMessage={errorMessage}
-        errorVisibility={errorVisibility}
-      />
+      <AnimatePresence initial={false}>
+        {errorVisibility && (
+          <ErrorMessage
+            errorMessage={errorMessage}
+            errorVisibility={errorVisibility}
+          />
+        )}
+      </AnimatePresence>
 
       {/* Submit button */}
-      <div className="input-container">
+      <motion.div
+        layout
+        transition={{ duration: 0.1 }}
+        className="input-container"
+      >
         <button type="submit">Send post</button>
-      </div>
-    </form>
+      </motion.div>
+    </motion.form>
   );
 }

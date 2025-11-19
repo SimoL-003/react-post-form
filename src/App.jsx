@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import SuccessMessage from "./components/SuccessMessage";
 import Form from "./components/Form";
+import { AnimatePresence } from "motion/react";
 
 function App() {
   const initialFormData = {
@@ -71,18 +72,26 @@ function App() {
           </div>
 
           {/* Success message */}
-          <SuccessMessage successVisibility={successVisibility} />
+          <AnimatePresence>
+            {successVisibility && (
+              <SuccessMessage successVisibility={successVisibility} />
+            )}
+          </AnimatePresence>
 
           {/* Form */}
-          <div className={`${formVisibility ? "block" : "hidden"} container`}>
-            <Form
-              errorMessage={errorMessage}
-              errorVisibility={errorVisibility}
-              handleInputChange={handleInputChange}
-              handleSubmit={handleSubmit}
-              formData={formData}
-            />
-          </div>
+          <AnimatePresence>
+            {formVisibility && (
+              <div className="container">
+                <Form
+                  errorMessage={errorMessage}
+                  errorVisibility={errorVisibility}
+                  handleInputChange={handleInputChange}
+                  handleSubmit={handleSubmit}
+                  formData={formData}
+                />
+              </div>
+            )}
+          </AnimatePresence>
         </section>
 
         {/* POSTS */}

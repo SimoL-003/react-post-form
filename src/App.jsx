@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 function App() {
@@ -20,12 +21,25 @@ function App() {
     }
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    axios
+      .post("https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts", formData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((res) => {
+        console.log(res.message);
+      });
+  }
+
   return (
     <>
       <main>
         <div className="container">
           <h1 className="my-4">Write a new post</h1>
-          <form action="">
+          <form onSubmit={handleSubmit} action="">
             <div className="mb-2 p-1 border-2">
               <label htmlFor="author">Author</label>
               <input

@@ -9,11 +9,15 @@
     @apply text-5xl font-bold text-slate-900 dark:text-slate-100;
   }
   h2 {
-    @apply text-center text-4xl font-bold my-8 md:my-10 leading-[1.2] text-slate-900 dark:text-slate-100;
+    @apply text-center lg:text-start text-4xl font-bold my-8 md:mb-10 md:mt-0 leading-[1.2] text-slate-900 dark:text-slate-100;
   }
 
   h3 {
     @apply text-2xl font-bold mb-2;
+  }
+
+  h4 {
+    @apply text-2xl font-bold;
   }
 }
 

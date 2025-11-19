@@ -12,6 +12,8 @@ function App() {
   const [formData, setFormData] = useState(initialFormData);
   const [successVisibility, setSuccessVisibility] = useState(false);
   const [formVisibility, setFormVisibility] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorVisibility, setErrorVisibility] = useState(false);
 
   function handleInputChange(e) {
     const input = e.target;
@@ -33,20 +35,22 @@ function App() {
         if (res.status == 201) {
           setSuccessVisibility((prev) => !prev);
           setFormVisibility((prev) => !prev);
+          setErrorVisibility(false);
+          setFormData(initialFormData);
+          setTimeout(() => setSuccessVisibility((prev) => !prev), 3000);
+          setTimeout(() => setFormVisibility((prev) => !prev), 3000);
         }
       })
       .catch((res) => {
         console.log(res.message);
+        setErrorMessage(res.message);
+        setErrorVisibility(true);
       });
-
-    setFormData(initialFormData);
-    setTimeout(() => setSuccessVisibility((prev) => !prev), 3000);
-    setTimeout(() => setFormVisibility((prev) => !prev), 3000);
   }
 
   return (
     <>
-      <main className="bg-white dark:bg-black py-8">
+      <main className="bg-white dark:bg-black py-8 min-h-screen">
         <div className="container my-8">
           <h1>My Blog</h1>
         </div>
@@ -104,6 +108,18 @@ function App() {
                 value={formData.public}
                 onChange={handleInputChange}
               />
+            </div>
+            <div
+              className={`${
+                errorVisibility ? "block" : "hidden"
+              } my-4 p-3 md:p-5 lg:p-6 border-2 border-red-800 dark:border-red-800 rounded-md bg-red-100  dark:bg-red-700/30 text-red-950 dark:text-red-100 shadow-sm`}
+            >
+              <h3>Something went wrong :-(</h3>
+              <p>
+                An error occurred:{" "}
+                <span className="font-bold">{errorMessage}</span>
+              </p>
+              <p>Please, try again</p>
             </div>
             <div className="input-container">
               <button type="submit">Send post</button>

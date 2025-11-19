@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import SuccessMessage from "./components/SuccessMessage";
 
 function App() {
   const initialFormData = {
@@ -62,21 +63,14 @@ function App() {
   return (
     <>
       <main className="bg-white dark:bg-black py-8 min-h-screen">
-        {/* Form section */}
+        {/* FORM */}
         <section>
           <div className="container my-8">
             <h1>My Blog</h1>
           </div>
 
           {/* Success message */}
-          <div
-            className={`${
-              successVisibility ? "block" : "hidden"
-            } container my-12 p-6 md:p-10 lg:p-12 border-2 border-green-800 dark:border-green-800 rounded-md bg-green-100  dark:bg-green-700/30 shadow-2xl lg:shadow-md text-green-950 dark:text-green-100`}
-          >
-            <h3>Your post has been posted</h3>
-            <p>Congratulations! You can see your post in the post page</p>
-          </div>
+          <SuccessMessage successVisibility={successVisibility} />
 
           {/* Form */}
           <div className={`${formVisibility ? "block" : "hidden"} container`}>
@@ -150,7 +144,7 @@ function App() {
           </div>
         </section>
 
-        {/* Posts section */}
+        {/* POSTS */}
         <section className="mt-20">
           <div className="container">
             <h2>Tutti i post</h2>

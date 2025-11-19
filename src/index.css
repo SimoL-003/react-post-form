@@ -4,8 +4,16 @@
   *:focus-visible {
     @apply outline-0;
   }
+
   h1 {
-    @apply text-4xl font-bold mb-8 md:mb-10 leading-[1.2] text-slate-900 dark:text-slate-100;
+    @apply text-5xl font-bold text-slate-900 dark:text-slate-100;
+  }
+  h2 {
+    @apply text-center text-4xl font-bold my-8 md:my-10 leading-[1.2] text-slate-900 dark:text-slate-100;
+  }
+
+  h3 {
+    @apply text-2xl font-bold mb-2;
   }
 }
 
@@ -45,6 +53,6 @@
 
 @layer utilities {
   .container {
-    @apply mx-auto my-0 w-[90%] lg:w-[85%] max-w-6xl;
+    @apply mx-auto w-[90%] lg:w-[85%] max-w-6xl;
   }
 }

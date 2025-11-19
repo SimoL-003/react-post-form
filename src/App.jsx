@@ -10,6 +10,8 @@ function App() {
   };
 
   const [formData, setFormData] = useState(initialFormData);
+  const [successVisibility, setSuccessVisibility] = useState(false);
+  const [formVisibility, setFormVisibility] = useState(true);
 
   function handleInputChange(e) {
     const input = e.target;
@@ -28,20 +30,37 @@ function App() {
       .post("https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts", formData)
       .then((res) => {
         console.log(res);
+        if (res.status == 201) {
+          setSuccessVisibility((prev) => !prev);
+          setFormVisibility((prev) => !prev);
+        }
       })
       .catch((res) => {
         console.log(res.message);
       });
 
     setFormData(initialFormData);
+    setTimeout(() => setSuccessVisibility((prev) => !prev), 3000);
+    setTimeout(() => setFormVisibility((prev) => !prev), 3000);
   }
 
   return (
     <>
-      <main className="bg-white dark:bg-black">
-        <div className="container py-16">
-          <h1>Write a new post</h1>
+      <main className="bg-white dark:bg-black py-8">
+        <div className="container my-8">
+          <h1>My Blog</h1>
+        </div>
+        <div
+          className={`${
+            successVisibility ? "block" : "hidden"
+          } container my-12 p-6 md:p-10 lg:p-12 border-2 border-green-800 dark:border-green-800 rounded-md bg-green-100  dark:bg-green-700/30 shadow-2xl lg:shadow-md text-green-950 dark:text-green-100`}
+        >
+          <h3>Your post has been posted</h3>
+          <p>Congratulations! You can see your post in the post page</p>
+        </div>
+        <div className={`${formVisibility ? "block" : "hidden"} container`}>
           <form onSubmit={handleSubmit} action="">
+            <h2>Write a new post</h2>
             <div className="input-container">
               <label htmlFor="author">Author</label>
               <input

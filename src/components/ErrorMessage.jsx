@@ -1,0 +1,15 @@
+export default function ErrorMessage({ errorMessage, errorVisibility }) {
+  return (
+    <div
+      className={`${
+        errorVisibility ? "block" : "hidden"
+      } my-4 p-3 md:p-5 lg:p-6 border-2 border-red-800 dark:border-red-800 rounded-md bg-red-100  dark:bg-red-700/30 text-red-950 dark:text-red-100 shadow-sm`}
+    >
+      <h3>Something went wrong :-(</h3>
+      <p>
+        An error occurred: <span className="font-bold">{errorMessage}</span>
+      </p>
+      <p>Please, try again</p>
+    </div>
+  );
+}

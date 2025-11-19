@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import SuccessMessage from "./components/SuccessMessage";
+import ErrorMessage from "./components/ErrorMessage";
 
 function App() {
   const initialFormData = {
@@ -125,18 +126,12 @@ function App() {
               </div>
 
               {/* Error message */}
-              <div
-                className={`${
-                  errorVisibility ? "block" : "hidden"
-                } my-4 p-3 md:p-5 lg:p-6 border-2 border-red-800 dark:border-red-800 rounded-md bg-red-100  dark:bg-red-700/30 text-red-950 dark:text-red-100 shadow-sm`}
-              >
-                <h3>Something went wrong :-(</h3>
-                <p>
-                  An error occurred:{" "}
-                  <span className="font-bold">{errorMessage}</span>
-                </p>
-                <p>Please, try again</p>
-              </div>
+              <ErrorMessage
+                errorMessage={errorMessage}
+                errorVisibility={errorVisibility}
+              />
+
+              {/* Submit button */}
               <div className="input-container">
                 <button type="submit">Send post</button>
               </div>

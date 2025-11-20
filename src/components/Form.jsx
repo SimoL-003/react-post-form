@@ -17,18 +17,8 @@ export default function Form({
       action=""
     >
       <h2>Write a new post</h2>
-      <div className="input-container">
-        <label htmlFor="author">Author</label>
-        <input
-          type="text"
-          name="author"
-          id="author"
-          placeholder="Author's name"
-          value={formData.author}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
+
+      {/* Title */}
       <div className="input-container">
         <label htmlFor="title">Post title</label>
         <input
@@ -41,6 +31,22 @@ export default function Form({
           required
         />
       </div>
+
+      {/* Author */}
+      <div className="input-container">
+        <label htmlFor="author">Author</label>
+        <input
+          type="text"
+          name="author"
+          id="author"
+          placeholder="Author's name"
+          value={formData.author}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
+
+      {/* Text */}
       <div className="input-container">
         <label htmlFor="body">Your post</label>
         <textarea
@@ -52,6 +58,8 @@ export default function Form({
           required
         ></textarea>
       </div>
+
+      {/* Checkbox public */}
       <div className="input-container flex-row items-center">
         <label className="mb-0 mr-2" htmlFor="public">
           Private post
@@ -67,12 +75,7 @@ export default function Form({
 
       {/* Error message */}
       <AnimatePresence initial={false}>
-        {errorVisibility && (
-          <ErrorMessage
-            errorMessage={errorMessage}
-            errorVisibility={errorVisibility}
-          />
-        )}
+        {errorVisibility && <ErrorMessage errorMessage={errorMessage} />}
       </AnimatePresence>
 
       {/* Submit button */}

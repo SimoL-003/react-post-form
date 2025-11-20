@@ -73,9 +73,7 @@ function App() {
 
           {/* Success message */}
           <AnimatePresence>
-            {successVisibility && (
-              <SuccessMessage successVisibility={successVisibility} />
-            )}
+            {successVisibility && <SuccessMessage />}
           </AnimatePresence>
 
           {/* Form */}
